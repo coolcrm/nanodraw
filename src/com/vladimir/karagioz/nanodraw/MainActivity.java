@@ -2,12 +2,14 @@ package com.vladimir.karagioz.nanodraw;
 
 import android.os.Bundle;
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
 
 
 public class MainActivity extends Activity 
@@ -51,7 +53,7 @@ public class MainActivity extends Activity
         //mPaint.setAlpha(0xFF);
 
         switch (item.getItemId()) {
-            case R.id.color:
+            case R.id.colormenuitem:
                 //Call for new Activity
             	//Create new intent
             	Intent intent = new Intent(this, SettingsActivity.class);
@@ -59,7 +61,17 @@ public class MainActivity extends Activity
             	startActivityForResult(intent, 1);
             	Log.v("Color", "Color dialog started");
 
-            	return true;/*
+            	return true;
+            case R.id.aboutmenuitem:
+            	Context context = getApplicationContext();
+            	Toast toast;
+            	CharSequence text = "NanoDraw - an app by Vladimir Karagioz, It's Coursera Homework. Thanks for watching this!";
+            	int duration = Toast.LENGTH_SHORT;
+
+            	toast = Toast.makeText(context, text, duration);
+            	toast.show();
+            	return true;
+            	/*
             case EMBOSS_MENU_ID:
                 if (mPaint.getMaskFilter() != mEmboss) {
                     mPaint.setMaskFilter(mEmboss);
